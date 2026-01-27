@@ -11,10 +11,44 @@
       "default": "Featured Categories"
     },
     {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle (Optional)",
+      "info": "Add a descriptive subtitle below the main title"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "Heading Size",
+      "options": [
+        { "value": "h0", "label": "Large" },
+        { "value": "h1", "label": "Medium" },
+        { "value": "h2", "label": "Small" }
+      ],
+      "default": "h1"
+    },
+    {
+      "type": "checkbox",
+      "id": "center_heading",
+      "label": "Center Align Header",
+      "default": false
+    },
+    {
       "type": "url",
       "id": "main_link",
       "label": "View All Link",
       "default": "/collections/all"
+    },
+    {
+      "type": "select",
+      "id": "button_style",
+      "label": "Button Style",
+      "options": [
+        { "value": "button--primary", "label": "Primary" },
+        { "value": "button--secondary", "label": "Secondary" },
+        { "value": "button--tertiary", "label": "Tertiary" }
+      ],
+      "default": "button--primary"
     }
   ],
   "blocks": [
@@ -67,8 +101,87 @@
 .category-grid__header {
   display: flex;
   justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-bottom: 3rem;
+  padding: 0 1.5rem;
+}
+@media (min-width: 750px) {
+  .category-grid__header {
+    align-items: center;
+    padding: 0;
+  }
+}
+.category-grid__header--center {
+  flex-direction: column;
   align-items: center;
-  margin-bottom: 2rem;
+  text-align: center;
+}
+.category-grid__title-wrapper {
+  flex: 1;
+  min-width: 0;
+}
+.category-grid__header--center .category-grid__title-wrapper {
+  flex: none;
+}
+.category-grid__title {
+  margin: 0;
+  padding-bottom: 1rem;
+  position: relative;
+  display: inline-block;
+  font-family: var(--font-heading-family);
+  font-weight: var(--font-heading-weight);
+  line-height: 1.2;
+}
+.category-grid__title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: currentColor;
+  opacity: 0.3;
+}
+.category-grid__header--center .category-grid__title::after {
+  left: 50%;
+  transform: translateX(-50%);
+}
+.category-grid__subtitle {
+  margin: 1rem 0 0;
+  font-size: 1.4rem;
+  line-height: 1.6;
+  opacity: 0.7;
+  font-weight: 400;
+}
+@media (min-width: 750px) {
+  .category-grid__subtitle {
+    font-size: 1.6rem;
+  }
+}
+.category-grid__button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  white-space: nowrap;
+}
+.category-grid__button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+.category-grid__button:hover .category-grid__button-icon {
+  transform: translateX(4px);
+}
+.category-grid__button-icon {
+  display: inline-flex;
+  align-items: center;
+  transition: transform 0.2s ease;
+}
+.category-grid__button-icon svg {
+  width: 1.4rem;
+  height: 1.4rem;
 }
 .category-grid__items {
   display: grid;
@@ -141,9 +254,25 @@
 {% endstylesheet %}
 
 <div class="category-grid">
-  <div class="category-grid__header">
-    <h2>{{ section.settings.main_title }}</h2>
-    <a href="{{ section.settings.main_link }}" class="button">View All</a>
+  <div class="category-grid__header{% if section.settings.center_heading %} category-grid__header--center{% endif %}">
+    <div class="category-grid__title-wrapper">
+      <h2 class="category-grid__title {{ section.settings.heading_size }}">
+        {{ section.settings.main_title }}
+      </h2>
+      {% if section.settings.subtitle != blank %}
+        <p class="category-grid__subtitle">{{ section.settings.subtitle }}</p>
+      {% endif %}
+    </div>
+    {% if section.settings.main_link != blank %}
+      <a href="{{ section.settings.main_link }}" class="button {{ section.settings.button_style }} category-grid__button">
+        <span>View All</span>
+        <span class="category-grid__button-icon">
+          <svg class="icon icon-arrow" aria-hidden="true" focusable="false" viewBox="0 0 14 10">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M8.537.808a.5.5 0 01.817-.162l4 4a.5.5 0 010 .708l-4 4a.5.5 0 11-.708-.708L11.793 5.5H1a.5.5 0 010-1h10.793L8.646 1.354a.5.5 0 01-.109-.546z" fill="currentColor"/>
+          </svg>
+        </span>
+      </a>
+    {% endif %}
   </div>
   {% comment %} <hr /> {% endcomment %}
   <div class="category-grid__items">
