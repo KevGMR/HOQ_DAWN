@@ -61,27 +61,75 @@
 {% stylesheet %}
 .category-grid {
   padding: 2rem 0;
-  margin: 0 10px 0 5px;
+  margin: 0 auto;
+  max-width: 1200px;
 }
 .category-grid__header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 }
 .category-grid__items {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+@media (min-width: 640px) {
+  .category-grid__items {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+@media (min-width: 1024px) {
+  .category-grid__items {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
 }
 .category-grid__item {
+  position: relative;
   text-align: center;
 }
-.category-grid__item img {
-  width: 47vw;
-  height: auto;
+.category-grid__item a {
+  display: block;
+  width: 100%;
+  text-decoration: none;
+  color: inherit;
+}
+.category-grid__image-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
   border-radius: 8px;
-  max-width: 47vw;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.category-grid__item:hover .category-grid__image-wrapper {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+.category-grid__item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.category-grid__label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1rem;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+  color: white;
+  font-size: 1.125rem;
+  font-weight: 600;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.category-grid__item:hover .category-grid__label {
+  opacity: 1;
 }
 {% endstylesheet %}
 
@@ -95,10 +143,12 @@
     {% for block in section.blocks %}
       <div class="category-grid__item">
         <a href="{{ block.settings.link }}">
-          {% if block.settings.image %}
-            <img src="{{ block.settings.image | image_url: width: 400 }}" alt="{{ block.settings.label }}">
-          {% endif %}
-          
+          <div class="category-grid__image-wrapper">
+            {% if block.settings.image %}
+              <img src="{{ block.settings.image | image_url: width: 800 }}" alt="{{ block.settings.label }}">
+            {% endif %}
+            <div class="category-grid__label">{{ block.settings.label }}</div>
+          </div>
         </a>
       </div>
     {% endfor %}
