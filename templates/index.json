@@ -1,1 +1,273 @@
-{"sections":{"custom_responsive_hero_knJywk":{"type":"custom-responsive-hero","name":"Responsive Image Section","settings":{"desktop_image":"shopify:\/\/shop_images\/GIFT_CARD_BANNER_0d00852a-8cd1-43c5-9644-ea131e86798a.png","alt_text":"GIft card banner","link_url":"shopify:\/\/products\/gift-card"}},"custom_responsive_hero_slider_iHemJm":{"type":"custom-responsive-hero-slider","blocks":{"slide_Aq4aDg":{"type":"slide","settings":{"desktop_image":"shopify:\/\/shop_images\/1_3a54c7f3-8058-4c37-92c3-5cbdfbc67a72.png","mobile_image":"shopify:\/\/shop_images\/2_9053e3ca-2c9b-497e-9275-d02381efc43c.png","alt_text":"Dresses","link_url":"shopify:\/\/collections\/dresses"}},"slide_UWzmyR":{"type":"slide","settings":{"desktop_image":"shopify:\/\/shop_images\/2_1917cf76-a729-46f4-a732-614dfa62d7d2.png","mobile_image":"shopify:\/\/shop_images\/1_037bba95-edb8-41d9-acc5-eab03e2e959f.png","alt_text":"Blouses","link_url":"shopify:\/\/collections\/shirts-tops"}}},"block_order":["slide_Aq4aDg","slide_UWzmyR"],"name":"Responsive Image Slider","settings":{"show_arrows":true,"show_dots":true,"transition_type":"slide","autoplay_enabled":true,"autoplay_delay":4000}},"custom_sub_collections_grid_3_kYaYNR":{"type":"custom-sub-collections-grid-3","blocks":{"subcategory_nPtcFC":{"type":"subcategory","settings":{"image":"shopify:\/\/shop_images\/Minimalist_Fashion_Weekend_Flyer_2.png","label":"Skater Dresses","link":"shopify:\/\/collections\/skater-dresses"}},"subcategory_XeCQpK":{"type":"subcategory","settings":{"image":"shopify:\/\/shop_images\/Black_and_White_Minimalist_Marketing_Photo_Studio_Flyer_2.png","label":"Maxi Dresses","link":"shopify:\/\/collections\/maxi-dresses"}},"subcategory_bBtJhb":{"type":"subcategory","settings":{"image":"shopify:\/\/shop_images\/BANDAGE_DRESS.png","label":"Bandage Dress","link":"shopify:\/\/collections\/bandage-dresses"}},"subcategory_HEEgdK":{"type":"subcategory","settings":{"image":"shopify:\/\/shop_images\/Grey_Dark_Car_Sale_Promo_Flyer.png","label":"Shirt Dresses","link":"shopify:\/\/collections\/shirt-dresses"}},"subcategory_ztYk3J":{"type":"subcategory","settings":{"image":"shopify:\/\/shop_images\/Black_and_White_Wedding_Photographer_Pricelist_Flyer.png","label":"Shift Dresses","link":"shopify:\/\/collections\/shift-dresses"}}},"block_order":["subcategory_nPtcFC","subcategory_XeCQpK","subcategory_bBtJhb","subcategory_HEEgdK","subcategory_ztYk3J"],"name":"Category Grid 2*2","settings":{"main_title":"Dresses","main_link":"shopify:\/\/collections\/dresses"}},"custom_responsive_hero_JXz9Mi":{"type":"custom-responsive-hero","name":"Responsive Image Section","settings":{"desktop_image":"shopify:\/\/shop_images\/IMG_2388.png","alt_text":"Hero Section","link_url":"shopify:\/\/collections"}},"featured_product_C77W9K":{"type":"featured-product","blocks":{"text_mH3Xnn":{"type":"text","settings":{"text":"{{ section.settings.product.vendor }}","text_style":"uppercase"}},"title_LpiEk4":{"type":"title","settings":{"heading_size":"h1"}},"price_MdwUqt":{"type":"price","settings":{}},"variant_picker_MernHk":{"type":"variant_picker","settings":{"picker_type":"button","swatch_shape":"circle"}},"quantity_selector_GTNGVM":{"type":"quantity_selector","settings":{}},"buy_buttons_BxiU9i":{"type":"buy_buttons","settings":{"show_dynamic_checkout":true,"show_gift_card_recipient":true}},"share_paiKNw":{"type":"share","settings":{"share_label":"Share"}}},"block_order":["text_mH3Xnn","title_LpiEk4","price_MdwUqt","variant_picker_MernHk","quantity_selector_GTNGVM","buy_buttons_BxiU9i","share_paiKNw"],"name":"t:sections.featured-product.presets.name","settings":{"product":"abby-bodycone-dress","color_scheme":"","secondary_background":false,"media_size":"medium","constrain_to_viewport":true,"media_fit":"contain","media_position":"left","image_zoom":"lightbox","hide_variants":false,"enable_video_looping":false,"padding_top":36,"padding_bottom":36}},"custom_sub_collections_grid_K7i8rG":{"type":"custom-sub-collections-grid","blocks":{"subcategory_FrhrWP":{"type":"subcategory","settings":{"image":"shopify:\/\/shop_images\/Blue_Car_Sale_Promo_Poster_2.png","label":"Blouses","link":"shopify:\/\/collections\/blouses"}},"subcategory_trJjMz":{"type":"subcategory","settings":{"image":"shopify:\/\/shop_images\/Black_and_White_Fashion_Magazine_Cover_1.png","label":"Two Piece Sets","link":"shopify:\/\/collections\/2-piece-sets"}},"subcategory_TEiqBT":{"type":"subcategory","settings":{"image":"shopify:\/\/shop_images\/Blue_and_Grey_Minimalist_Fashion_Flash_Sale_Poster.png","label":"Jumpsuits","link":"shopify:\/\/collections\/jumpsuits"}}},"block_order":["subcategory_FrhrWP","subcategory_trJjMz","subcategory_TEiqBT"],"name":"Category Grid 3*3","settings":{"main_title":"Featured Categories","main_link":"shopify:\/\/collections\/all"}},"featured_collection":{"type":"featured-collection","settings":{"collection":"all","products_to_show":8,"title":"Check out our products.....","heading_size":"h2","description":"","show_description":false,"description_style":"body","columns_desktop":4,"enable_desktop_slider":false,"full_width":false,"show_view_all":true,"view_all_style":"solid","color_scheme":"scheme-1","image_ratio":"portrait","image_shape":"default","show_secondary_image":true,"show_vendor":false,"show_rating":false,"quick_add":"none","columns_mobile":"2","swipe_on_mobile":false,"padding_top":44,"padding_bottom":36}}},"order":["custom_responsive_hero_knJywk","custom_responsive_hero_slider_iHemJm","custom_sub_collections_grid_3_kYaYNR","custom_responsive_hero_JXz9Mi","featured_product_C77W9K","custom_sub_collections_grid_K7i8rG","featured_collection"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "custom_responsive_hero_knJywk": {
+      "type": "custom-responsive-hero",
+      "name": "Responsive Image Section",
+      "settings": {
+        "desktop_image": "shopify://shop_images/GIFT_CARD_BANNER_0d00852a-8cd1-43c5-9644-ea131e86798a.png",
+        "alt_text": "GIft card banner",
+        "link_url": "shopify://products/gift-card"
+      }
+    },
+    "custom_responsive_hero_slider_iHemJm": {
+      "type": "custom-responsive-hero-slider",
+      "blocks": {
+        "slide_Aq4aDg": {
+          "type": "slide",
+          "settings": {
+            "desktop_image": "shopify://shop_images/1_3a54c7f3-8058-4c37-92c3-5cbdfbc67a72.png",
+            "mobile_image": "shopify://shop_images/2_9053e3ca-2c9b-497e-9275-d02381efc43c.png",
+            "alt_text": "Dresses",
+            "link_url": "shopify://collections/dresses"
+          }
+        },
+        "slide_UWzmyR": {
+          "type": "slide",
+          "settings": {
+            "desktop_image": "shopify://shop_images/2_1917cf76-a729-46f4-a732-614dfa62d7d2.png",
+            "mobile_image": "shopify://shop_images/1_037bba95-edb8-41d9-acc5-eab03e2e959f.png",
+            "alt_text": "Blouses",
+            "link_url": "shopify://collections/shirts-tops"
+          }
+        }
+      },
+      "block_order": [
+        "slide_Aq4aDg",
+        "slide_UWzmyR"
+      ],
+      "name": "Responsive Image Slider",
+      "settings": {
+        "show_arrows": true,
+        "show_dots": true,
+        "transition_type": "slide",
+        "autoplay_enabled": true,
+        "autoplay_delay": 4000
+      }
+    },
+    "custom_sub_collections_grid_3_kYaYNR": {
+      "type": "custom-sub-collections-grid-3",
+      "blocks": {
+        "subcategory_nPtcFC": {
+          "type": "subcategory",
+          "settings": {
+            "image": "shopify://shop_images/Minimalist_Fashion_Weekend_Flyer_2.png",
+            "label": "Skater Dresses",
+            "link": "shopify://collections/skater-dresses"
+          }
+        },
+        "subcategory_XeCQpK": {
+          "type": "subcategory",
+          "settings": {
+            "image": "shopify://shop_images/Black_and_White_Minimalist_Marketing_Photo_Studio_Flyer_2.png",
+            "label": "Maxi Dresses",
+            "link": "shopify://collections/maxi-dresses"
+          }
+        },
+        "subcategory_bBtJhb": {
+          "type": "subcategory",
+          "settings": {
+            "image": "shopify://shop_images/BANDAGE_DRESS.png",
+            "label": "Bandage Dress",
+            "link": "shopify://collections/bandage-dresses"
+          }
+        },
+        "subcategory_HEEgdK": {
+          "type": "subcategory",
+          "settings": {
+            "image": "shopify://shop_images/Grey_Dark_Car_Sale_Promo_Flyer.png",
+            "label": "Shirt Dresses",
+            "link": "shopify://collections/shirt-dresses"
+          }
+        },
+        "subcategory_ztYk3J": {
+          "type": "subcategory",
+          "settings": {
+            "image": "shopify://shop_images/Black_and_White_Wedding_Photographer_Pricelist_Flyer.png",
+            "label": "Shift Dresses",
+            "link": "shopify://collections/shift-dresses"
+          }
+        }
+      },
+      "block_order": [
+        "subcategory_nPtcFC",
+        "subcategory_XeCQpK",
+        "subcategory_bBtJhb",
+        "subcategory_HEEgdK",
+        "subcategory_ztYk3J"
+      ],
+      "name": "Category Grid 2*2",
+      "settings": {
+        "main_title": "Dresses",
+        "subtitle": "Absolute Confidence",
+        "heading_size": "h1",
+        "center_heading": false,
+        "main_link": "shopify://collections/dresses",
+        "button_style": "button--primary"
+      }
+    },
+    "custom_responsive_hero_JXz9Mi": {
+      "type": "custom-responsive-hero",
+      "name": "Responsive Image Section",
+      "settings": {
+        "desktop_image": "shopify://shop_images/IMG_2388.png",
+        "alt_text": "Hero Section",
+        "link_url": "shopify://collections"
+      }
+    },
+    "featured_product_C77W9K": {
+      "type": "featured-product",
+      "blocks": {
+        "text_mH3Xnn": {
+          "type": "text",
+          "settings": {
+            "text": "{{ section.settings.product.vendor }}",
+            "text_style": "uppercase"
+          }
+        },
+        "title_LpiEk4": {
+          "type": "title",
+          "settings": {
+            "heading_size": "h1"
+          }
+        },
+        "price_MdwUqt": {
+          "type": "price",
+          "settings": {}
+        },
+        "variant_picker_MernHk": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
+          }
+        },
+        "quantity_selector_GTNGVM": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "buy_buttons_BxiU9i": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": true
+          }
+        },
+        "share_paiKNw": {
+          "type": "share",
+          "settings": {
+            "share_label": "Share"
+          }
+        }
+      },
+      "block_order": [
+        "text_mH3Xnn",
+        "title_LpiEk4",
+        "price_MdwUqt",
+        "variant_picker_MernHk",
+        "quantity_selector_GTNGVM",
+        "buy_buttons_BxiU9i",
+        "share_paiKNw"
+      ],
+      "name": "t:sections.featured-product.presets.name",
+      "settings": {
+        "product": "abby-bodycone-dress",
+        "color_scheme": "",
+        "secondary_background": false,
+        "media_size": "medium",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "media_position": "left",
+        "image_zoom": "lightbox",
+        "hide_variants": false,
+        "enable_video_looping": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "custom_sub_collections_grid_K7i8rG": {
+      "type": "custom-sub-collections-grid",
+      "blocks": {
+        "subcategory_FrhrWP": {
+          "type": "subcategory",
+          "settings": {
+            "image": "shopify://shop_images/Blue_Car_Sale_Promo_Poster_2.png",
+            "label": "Blouses",
+            "link": "shopify://collections/blouses"
+          }
+        },
+        "subcategory_trJjMz": {
+          "type": "subcategory",
+          "settings": {
+            "image": "shopify://shop_images/Black_and_White_Fashion_Magazine_Cover_1.png",
+            "label": "Two Piece Sets",
+            "link": "shopify://collections/2-piece-sets"
+          }
+        },
+        "subcategory_TEiqBT": {
+          "type": "subcategory",
+          "settings": {
+            "image": "shopify://shop_images/Blue_and_Grey_Minimalist_Fashion_Flash_Sale_Poster.png",
+            "label": "Jumpsuits",
+            "link": "shopify://collections/jumpsuits"
+          }
+        }
+      },
+      "block_order": [
+        "subcategory_FrhrWP",
+        "subcategory_trJjMz",
+        "subcategory_TEiqBT"
+      ],
+      "name": "Category Grid 3*3",
+      "settings": {
+        "main_title": "Featured Categories",
+        "main_link": "shopify://collections/all"
+      }
+    },
+    "featured_collection": {
+      "type": "featured-collection",
+      "settings": {
+        "collection": "all",
+        "products_to_show": 8,
+        "title": "Check out our products.....",
+        "heading_size": "h2",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "columns_desktop": 4,
+        "enable_desktop_slider": false,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "color_scheme": "scheme-1",
+        "image_ratio": "portrait",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 44,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "custom_responsive_hero_knJywk",
+    "custom_responsive_hero_slider_iHemJm",
+    "custom_sub_collections_grid_3_kYaYNR",
+    "custom_responsive_hero_JXz9Mi",
+    "featured_product_C77W9K",
+    "custom_sub_collections_grid_K7i8rG",
+    "featured_collection"
+  ]
+}
