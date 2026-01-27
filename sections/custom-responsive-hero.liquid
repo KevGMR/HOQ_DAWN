@@ -1,0 +1,89 @@
+{% comment %}
+  Responsive Image Section
+  Shows desktop image on screens >= 768px and mobile image below that
+  If only one image is uploaded, it is used for all devices
+  Image can link to a custom URL if provided
+{% endcomment %}
+
+<section class="responsive-image-section">
+  {% assign desktop_img = section.settings.desktop_image %}
+  {% assign mobile_img = section.settings.mobile_image %}
+  {% assign link_url = section.settings.link_url %}
+
+  {% if desktop_img or mobile_img %}
+    {% if link_url != blank %}
+      <a href="{{ link_url }}" class="responsive-image-link">
+    {% endif %}
+
+    <picture>
+      {% if mobile_img != blank %}
+        <source srcset="{{ mobile_img | img_url: 'master' }}" media="(max-width: 767px)">
+      {% endif %}
+      {% if desktop_img != blank %}
+        <source srcset="{{ desktop_img | img_url: 'master' }}" media="(min-width: 768px)">
+      {% endif %}
+      <img 
+        src="{{ desktop_img | default: mobile_img | img_url: 'master' }}" 
+        alt="{{ section.settings.alt_text | escape }}"
+        loading="lazy"
+        class="responsive-image"
+      >
+    </picture>
+
+    {% if link_url != blank %}
+      </a>
+    {% endif %}
+  {% else %}
+    <p style="text-align:center;">Upload an image in the section settings.</p>
+  {% endif %}
+</section>
+
+<style>
+  .responsive-image-section {
+    width: 100%;
+    display: block;
+  }
+  .responsive-image {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .responsive-image-link {
+    display: block;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Responsive Image",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "desktop_image",
+      "label": "Desktop Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image",
+      "label": "Mobile Image"
+    },
+    {
+      "type": "text",
+      "id": "alt_text",
+      "label": "Image Alt Text",
+      "default": "Image description"
+    },
+    {
+      "type": "url",
+      "id": "link_url",
+      "label": "Image Link URL"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Responsive Image Section",
+      "category": "Image"
+    }
+  ]
+}
+{% endschema %}

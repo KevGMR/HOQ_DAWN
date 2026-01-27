@@ -1,0 +1,311 @@
+{% comment %}
+  Responsive Image Slider – Autoplay + Swipe + Fade Option + Button Toggle
+{% endcomment %}
+
+<section class="responsive-image-slider" id="slider-{{ section.id }}">
+  <div class="slider-wrapper {% if section.settings.transition_type == 'fade' %}fade-mode{% endif %}">
+    
+    <div class="slider-track">
+      {% for block in section.blocks %}
+        <div class="slide" data-index="{{ forloop.index0 }}">
+          {% assign desktop_img = block.settings.desktop_image %}
+          {% assign mobile_img = block.settings.mobile_image %}
+          {% assign link_url = block.settings.link_url %}
+
+          {% if link_url != blank %}
+            <a href="{{ link_url }}" class="slide-link">
+          {% endif %}
+
+            <picture>
+              {% if mobile_img %}
+                <source srcset="{{ mobile_img | img_url: 'master' }}" media="(max-width: 767px)">
+              {% endif %}
+              {% if desktop_img %}
+                <source srcset="{{ desktop_img | img_url: 'master' }}" media="(min-width: 768px)">
+              {% endif %}
+              <img
+                src="{{ desktop_img | default: mobile_img | img_url: 'master' }}"
+                alt="{{ block.settings.alt_text | escape }}"
+                class="slide-img"
+                loading="lazy"
+              >
+            </picture>
+
+          {% if link_url != blank %}
+            </a>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+
+    {% if section.settings.show_arrows %}
+      <button class="slider-prev">‹</button>
+      <button class="slider-next">›</button>
+    {% endif %}
+
+    {% if section.settings.show_dots %}
+      <div class="slider-dots">
+        {% for block in section.blocks %}
+          <div class="slider-dot" data-dot="{{ forloop.index0 }}"></div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+<style>
+  .responsive-image-slider {
+    width: 100%;
+    position: relative;
+  }
+
+  .slider-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .slider-track {
+    display: flex;
+    transition: transform 0.35s ease;
+  }
+
+  .slide {
+    min-width: 100%;
+    position: relative;
+    opacity: 1;
+    transition: opacity 0.4s ease-in-out;
+  }
+
+  /* Fade mode */
+  .fade-mode .slider-track {
+    position: relative;
+    display: block;
+  }
+  .fade-mode .slide {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    opacity: 0;
+  }
+  .fade-mode .slide.is-active {
+    opacity: 1;
+    z-index: 2;
+  }
+
+  .slide-img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .slide-link { display: block; }
+
+  /* Buttons with invisible bg + white text + glow */
+  #slider-{{ section.id }} .slider-prev,
+  #slider-{{ section.id }} .slider-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    color: #fff;
+    border: none;
+    font-size: 2rem;
+    padding: 0.25rem 0.5rem;
+    cursor: pointer;
+    z-index: 20;
+
+    /* strong white shadow for visibility on light images */
+    text-shadow: 0 0 6px rgba(0,0,0,0.7), 0 0 4px rgba(0,0,0,0.5);
+  }
+
+  #slider-{{ section.id }} .slider-prev { left: 12px; }
+  #slider-{{ section.id }} .slider-next { right: 12px; }
+
+  /* Dots */
+  #slider-{{ section.id }} .slider-dots {
+    position: absolute;
+    left: 50%;
+    bottom: 12px;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 20;
+  }
+
+  #slider-{{ section.id }} .slider-dot {
+    width: 12px;
+    height: 12px;
+    min-width: 12px;
+    min-height: 12px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(0,0,0,0.3);
+  }
+
+  #slider-{{ section.id }} .slider-dot.is-active {
+    background: #000;
+  }
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const slider = document.querySelector("#slider-{{ section.id }}");
+  if (!slider) return;
+
+  const track = slider.querySelector(".slider-track");
+  const slides = slider.querySelectorAll(".slide");
+  const dots = slider.querySelectorAll(".slider-dot");
+  const prevBtn = slider.querySelector(".slider-prev");
+  const nextBtn = slider.querySelector(".slider-next");
+  const fadeMode = slider.querySelector(".slider-wrapper").classList.contains("fade-mode");
+
+  let current = 0;
+  const total = slides.length;
+  let autoplayTimer;
+  const autoplayDelay = {{ section.settings.autoplay_delay | default: 4000 }};
+
+  function updateSlider() {
+    if (fadeMode) {
+      slides.forEach(s => s.classList.remove("is-active"));
+      slides[current].classList.add("is-active");
+    } else {
+      track.style.transform = `translateX(-${current * 100}%)`;
+    }
+
+    dots.forEach(dot => dot.classList.remove("is-active"));
+    if (dots[current]) dots[current].classList.add("is-active");
+  }
+
+  function nextSlide() {
+    current = (current + 1) % total;
+    updateSlider();
+  }
+
+  function prevSlide() {
+    current = (current - 1 + total) % total;
+    updateSlider();
+  }
+
+  // Autoplay
+  function startAutoplay() {
+    clearInterval(autoplayTimer);
+    autoplayTimer = setInterval(nextSlide, autoplayDelay);
+  }
+
+  function pauseAutoplay() {
+    clearInterval(autoplayTimer);
+    setTimeout(startAutoplay, 2000); // resume after inactivity
+  }
+
+  // Buttons
+  if (nextBtn) nextBtn.addEventListener("click", () => { nextSlide(); pauseAutoplay(); });
+  if (prevBtn) prevBtn.addEventListener("click", () => { prevSlide(); pauseAutoplay(); });
+
+  // Dots click
+  dots.forEach(dot => {
+    dot.addEventListener("click", () => {
+      current = parseInt(dot.dataset.dot);
+      updateSlider();
+      pauseAutoplay();
+    });
+  });
+
+  // Drag/swipe
+  let startX = 0;
+  let isDragging = false;
+
+  track.addEventListener("touchstart", e => {
+    startX = e.touches[0].clientX;
+    isDragging = true;
+    pauseAutoplay();
+  });
+
+  track.addEventListener("touchmove", e => {
+    if (!isDragging) return;
+    let moveX = e.touches[0].clientX - startX;
+    if (Math.abs(moveX) > 60) {
+      isDragging = false;
+      if (moveX < 0) nextSlide();
+      else prevSlide();
+    }
+  });
+
+  track.addEventListener("touchend", () => {
+    isDragging = false;
+    pauseAutoplay();
+  });
+
+  updateSlider();
+  {% if section.settings.autoplay_enabled %}
+  startAutoplay();
+  {% endif %}
+});
+</script>
+
+
+{% schema %}
+{
+  "name": "Responsive Image Slider",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_arrows",
+      "label": "Show Previous/Next Buttons",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_dots",
+      "label": "Show Slider Dots",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "transition_type",
+      "label": "Transition Type",
+      "default": "slide",
+      "options": [
+        { "value": "slide", "label": "Slide" },
+        { "value": "fade", "label": "Fade" }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay_enabled",
+      "label": "Enable Autoplay",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "autoplay_delay",
+      "label": "Autoplay Delay (ms)",
+      "min": 2000,
+      "max": 9000,
+      "step": 500,
+      "default": 4000
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        { "type": "image_picker", "id": "desktop_image", "label": "Desktop Image" },
+        { "type": "image_picker", "id": "mobile_image", "label": "Mobile Image" },
+        { "type": "text", "id": "alt_text", "label": "Alt Text", "default": "Image description" },
+        { "type": "url", "id": "link_url", "label": "Link URL" }
+      ]
+    }
+  ],
+  "max_blocks": 10,
+  "presets": [
+    {
+      "name": "Responsive Image Slider",
+      "category": "Image"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,106 @@
+{% comment %} This is actually grid 3 {% endcomment %}
+
+{% schema %}
+{
+  "name": "Category Grid  3*3",
+  "settings": [
+    {
+      "type": "text",
+      "id": "main_title",
+      "label": "Main Category Title",
+      "default": "Featured Categories"
+    },
+    {
+      "type": "url",
+      "id": "main_link",
+      "label": "View All Link",
+      "default": "/collections/all"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "subcategory",
+      "name": "Subcategory",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Subcategory Image"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Subcategory Label",
+          "default": "Category Name"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Subcategory Link",
+          "default": "/collections/all"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 10,
+  "presets": [
+    {
+      "name": "Category Grid 3*3",
+      "category": "Custom Menus",
+      "blocks": [
+        { "type": "subcategory" },
+        { "type": "subcategory" },
+        { "type": "subcategory" }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+
+{% stylesheet %}
+.category-grid {
+  padding: 2rem 0;
+  margin: 0 10px 0 5px;
+}
+.category-grid__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.category-grid__items {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+.category-grid__item {
+  text-align: center;
+}
+.category-grid__item img {
+  width: 30vw;
+  height: auto;
+  border-radius: 8px;
+  max-width: 30vw;
+}
+{% endstylesheet %}
+
+<div class="category-grid">
+  <div class="category-grid__header">
+    <h2>{{ section.settings.main_title }}</h2>
+    <a href="{{ section.settings.main_link }}" class="button">View All</a>
+  </div>
+  {% comment %} <hr /> {% endcomment %}
+  <div class="category-grid__items">
+    {% for block in section.blocks %}
+      <div class="category-grid__item">
+        <a href="{{ block.settings.link }}">
+          {% if block.settings.image %}
+            <img src="{{ block.settings.image | image_url: width: 400 }}" alt="{{ block.settings.label }}">
+          {% endif %}
+          
+        </a>
+      </div>
+    {% endfor %}
+  </div>
+</div>
