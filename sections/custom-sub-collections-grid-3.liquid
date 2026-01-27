@@ -106,6 +106,7 @@
   overflow: hidden;
   border-radius: 8px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  isolation: isolate;
 }
 .category-grid__item:hover .category-grid__image-wrapper {
   transform: scale(1.05);
@@ -123,13 +124,16 @@
   left: 0;
   right: 0;
   padding: 1rem;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.4) 70%, transparent 100%);
   color: white;
   font-size: 1.125rem;
   font-weight: 600;
   opacity: 0;
   transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 2;
 }
+
 .category-grid__item:hover .category-grid__label {
   opacity: 1;
 }
