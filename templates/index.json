@@ -107,11 +107,11 @@
       "name": "Category Grid 2*2",
       "settings": {
         "main_title": "Dresses",
-        "subtitle": "Absolute Confidence",
-        "heading_size": "h1",
+        "subtitle": "",
+        "heading_size": "h2",
         "center_heading": false,
         "main_link": "shopify://collections/dresses",
-        "button_style": "button--primary"
+        "button_style": "button--secondary"
       }
     },
     "custom_responsive_hero_JXz9Mi": {
