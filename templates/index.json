@@ -13,7 +13,7 @@
       "type": "custom-responsive-hero",
       "name": "Responsive Image Section",
       "settings": {
-        "desktop_image": "shopify://shop_images/GIFT_CARD_BANNER_0d00852a-8cd1-43c5-9644-ea131e86798a.png",
+        "desktop_image": "shopify://shop_images/SLIDER_BANNERS_-_1920_SKINNY.png",
         "alt_text": "GIft card banner",
         "link_url": "shopify://products/gift-card"
       }
@@ -44,6 +44,7 @@
         "slide_Aq4aDg",
         "slide_UWzmyR"
       ],
+      "disabled": true,
       "name": "Responsive Image Slider",
       "settings": {
         "show_arrows": true,
